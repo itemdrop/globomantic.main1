@@ -1,16 +1,11 @@
-import path from "path";
-import fs from "fs";
-const { promisify } = require("util");
+import housesData from "../../../houses.json";
 
-const readFile = promisify(fs.readFile);
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export default async function userHandler(req, res) {
   const id = parseInt(req?.query?.id);
-  const jsonFile = path.resolve("./", "houses.json");
-  const readFileData = await readFile(jsonFile);
   await delay(1000);
-  const houses = JSON.parse(readFileData).houses;
+  const houses = housesData.houses;
   const house = houses.find((rec) => rec.id === id);
   if (house) {
     res.setHeader("Content-Type", "application/json");

@@ -1,16 +1,12 @@
-import path from "path";
-import fs from "fs";
+import housesData from "../../../houses.json";
 
-const { promisify } = require("util");
-const readFile = promisify(fs.readFile);
-const writeFile = promisify(fs.writeFile);
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+// In-memory storage for demo purposes (will reset on each deployment)
+let houses = housesData.houses;
 
 export default async function handler(req, res) {
   const method = req?.method;
-  const jsonFile = path.resolve("./", "houses.json");
-  const readFileData = await readFile(jsonFile);
-  const houses = JSON.parse(readFileData).houses;
   await delay(1000);
 
   switch (method) {
@@ -32,17 +28,7 @@ export default async function handler(req, res) {
       try {
         const recordFromBody = req?.body;
         recordFromBody.id = Math.max(...houses.map((h) => h.id)) + 1;
-        const newHousesArray = [...houses, recordFromBody];
-        writeFile(
-          jsonFile,
-          JSON.stringify(
-            {
-              houses: newHousesArray,
-            },
-            null,
-            2
-          )
-        );
+        houses = [...houses, recordFromBody];
         res.status(200).json(recordFromBody);
         console.log(`POST /api/houses status: 200`);
       } catch (e) {
