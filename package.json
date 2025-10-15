@@ -1,10 +1,23 @@
 {
-  "name": "globomantic-root",
-  "version": "1.0.0",
+  "name": "globomantics",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=18.17.0"
+  },
   "scripts": {
-    "build": "cd globomantics.main1 && npm run build",
-    "start": "cd globomantics.main1 && npm start",
-    "dev": "cd globomantics.main1 && npm run dev",
-    "install:app": "cd globomantics.main1 && npm install"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "12.2.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "eslint": "8.19.0",
+    "eslint-config-next": "12.2.2"
   }
 }

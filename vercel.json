@@ -1,16 +1,8 @@
 {
-  "version": 2,
-  "name": "globomantics",
-  "builds": [
-    {
-      "src": "globomantics.main1/package.json",
-      "use": "@vercel/next"
+  "functions": {
+    "pages/api/**/*.js": {
+      "runtime": "nodejs18.x"
     }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/globomantics.main1/$1"
-    }
-  ]
+  },
+  "regions": ["iad1"]
 }

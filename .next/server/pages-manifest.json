@@ -1,0 +1,10 @@
+{
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/api/bids/[houseId]": "pages/api/bids/[houseId].js",
+  "/api/houses/[id]": "pages/api/houses/[id].js",
+  "/api/houses": "pages/api/houses.js",
+  "/": "pages/index.html",
+  "/404": "pages/404.html"
+}
